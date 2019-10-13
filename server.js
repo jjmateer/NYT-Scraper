@@ -26,12 +26,11 @@ var dbUrl = `mongodb+srv://jjmateer:${process.env.MONGO_PW}@cluster0-q0kab.mongo
 mongoose.connect(dbUrl, err => {
     console.log("Connected to mongoose");
     if (err) {
-      console.log(err)
+        console.log(err)
     }
-  });
+});
 
 
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
-  });
-  
+app.listen(PORT, () => {
+    console.log(`Connected to port: http://localhost:${PORT}`)
+})
