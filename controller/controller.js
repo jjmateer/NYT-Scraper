@@ -22,18 +22,18 @@ exports.scrape = function (req, res) {
                 .text()
             db.Article.create(result)
                 .then(function (dbArticle) {
-                    // console.log(dbArticle);
+                    console.log(dbArticle);
                 })
                 .catch(function (err) {
-                    // console.log(err);
+                    console.log(err);
                 });
         });
     }).then(() => {
-        res.redirect("/articles")
+        console.log("Scrape Complete!")
     })
 }
 exports.getAll = function (req, res) {
-    db.Article.find({})
+    db.Article.find({}).limit(10)
         .then(function (results) {
                 res.render("index", { data: results })
         })
@@ -54,4 +54,10 @@ exports.getOne = function (req, res) {
 }
 exports.postNote = function (req, res) {
 
+}
+exports.clear = function(req, res) {
+    db.Article.remove()
+    .then(() => {
+        res.redirect("/")
+    })
 }
