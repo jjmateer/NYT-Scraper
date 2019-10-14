@@ -31,10 +31,10 @@ exports.scrape = function (req, res) {
                 .text()
             db.Article.create(result)
                 .then(function (dbArticle) {
-                    console.log(dbArticle);
+                    // console.log(dbArticle);
                 })
                 .catch(function (err) {
-                    console.log(err);
+                    // console.log(err);
                 });
         });
     }).then(() => {
@@ -57,26 +57,25 @@ exports.postNote = function (req, res) {
 }
 
 exports.save = function (req, res) {
-    db.Article.update({}, { $set: { saved: true } }, { multi: true })
+    db.Article.updateOne({ _id: req.params.id}, { $set: { saved: true } }, { multi: true })
         .then(() => {
             res.redirect("/")
-                .catch(function (err) {
-                    res.json(err)
-                })
+        })
+        .catch(function (err) {
+            res.json(err)
         })
 }
 
 exports.saved = function (req, res) {
-    db.Article.find({saved: true}).limit(10)
+    db.Article.find({ saved: true }).limit(30)
         .then(function (results) {
             res.render("saved", { data: results })
-                .catch(function (err) {
-                    res.json(err);
-                });
-        })
+        }).catch(function (err) {
+            res.json(err);
+        });
 }
 exports.clear = function (req, res) {
-    db.Article.remove()
+    db.Article.deleteMany()
         .then(() => {
             res.redirect("/")
         })
