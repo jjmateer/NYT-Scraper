@@ -4,7 +4,6 @@ const controller = require("./controller/controller.js")
 
 router.get("/", controller.home);
 router.get("/scrape", controller.scrape);
-router.get("/articles", controller.getAll);
 router.get("/articles/:id", controller.getOne);
 router.post("/articles/:id", controller.postNote);
 router.get("/clear", controller.clear)

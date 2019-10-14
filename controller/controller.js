@@ -2,7 +2,13 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("../models");
 exports.home = function (req, res) {
-    res.render("index")
+    db.Article.find({}).limit(10)
+        .then(function (results) {
+                res.render("index", { data: results })
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 }
 exports.scrape = function (req, res) {
     axios.get("https://www.nytimes.com/section/world").then(function (response) {
@@ -29,17 +35,8 @@ exports.scrape = function (req, res) {
                 });
         });
     }).then(() => {
-        console.log("Scrape Complete!")
+        res.redirect("/")
     })
-}
-exports.getAll = function (req, res) {
-    db.Article.find({}).limit(10)
-        .then(function (results) {
-                res.render("index", { data: results })
-        })
-        .catch(function (err) {
-            res.json(err);
-        });
 }
 exports.getOne = function (req, res) {
     db.Article.findOne({ _id: req.params.id })
