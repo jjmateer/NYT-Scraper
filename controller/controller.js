@@ -35,11 +35,19 @@ exports.scrape = function (req, res) {
 exports.getAll = function (req, res) {
     db.Article.find({})
         .then(function (results) {
-            res.json(results)
+            var titleArr = [];
+            var linkArr = [];
+            var summaryArr = [];
+            for (let i = 0; i < results.length; i++) {
+                titleArr.push(results[i].title)
+                linkArr.push(results[i].link)
+                summaryArr.push(results[i].summary)
+            }
+            res.render("index", { titles: titleArr, links: linkArr, summaries: summaryArr })
         })
-    .catch(function(err) {
-      res.json(err);
-    });
+        .catch(function (err) {
+            res.json(err);
+        });
 }
 exports.getOne = function (req, res) {
     db.Article.findOne({ _id: req.params.id })
