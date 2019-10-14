@@ -13,14 +13,13 @@ exports.scrape = function (req, res) {
                 .children("h2")
                 .children("a")
                 .text()
-            result.link = $(this)
-            .children("h2")
-            .children("a")
-            .attr('href')
+            result.link = `https://www.nytimes.com${$(this)
+                .children("h2")
+                .children("a")
+                .attr('href')}`
             result.summary = $(this)
-            .children("p"[0])
-            .text()
-            // .hasClass("css-l8q78b e134j7ei1")
+                .children("p"[0])
+                .text()
             db.Article.create(result)
                 .then(function (dbArticle) {
                     console.log(dbArticle);
@@ -34,7 +33,13 @@ exports.scrape = function (req, res) {
     })
 }
 exports.getAll = function (req, res) {
-
+    db.Article.find({})
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 }
 exports.getOne = function (req, res) {
 

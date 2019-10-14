@@ -1,12 +1,16 @@
 <div class="jumbotron">
     <h1 class="display-4">New York Times World News Scraper</h1>
     <hr class="my-4">
-    <a class="btn btn-danger btn-lg" href="#" role="button">Home</a>
-    <a class="btn btn-danger btn-lg" href="#" role="button">Saved Articles</a>
-    <a class="btn btn-danger btn-lg" href="#" role="button">Scrape</a>
-    <a class="btn btn-danger btn-lg" href="#" role="button">Clear</a>
+    <a class="btn btn-danger btn-lg" role="button">Home</a>
+    <a class="btn btn-danger btn-lg" role="button">Saved Articles</a>
+    <a class="btn btn-danger btn-lg" role="button">Scrape</a>
+    <a class="btn btn-danger btn-lg" role="button">Clear</a>
 </div>
 <div id="mainCont" class="container-fluid">
-    <div id="articles"></div>
+    <div id="articles">
+        {{!-- {{#each cards}} --}}
+        {{> cards/card-block}}
+        {{!-- {{/each}} --}}
+    </div>
     <div id="notes"></div>
 </div>

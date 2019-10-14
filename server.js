@@ -1,11 +1,8 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
-const axios = require("axios");
-const cheerio = require("cheerio");
 const bodyparser = require("body-parser");
 const router = require("./router");
-const db = require("./models");
 require('dotenv').config()
 const app = express();
 
