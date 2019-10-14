@@ -1,10 +1,13 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("../models");
+const url = require('url');
+const adr = 'http://localhost:8080';
+const q = url.parse(adr, true);
 exports.home = function (req, res) {
     db.Article.find({}).limit(10)
         .then(function (results) {
-                res.render("index", { data: results })
+            res.render("index", { data: results })
         })
         .catch(function (err) {
             res.json(err);
@@ -42,19 +45,39 @@ exports.getOne = function (req, res) {
     db.Article.findOne({ _id: req.params.id })
         .populate("note")
         .then(function (dbArticle) {
-            // If we were able to successfully find an Article with the given id, send it back to the client
             res.json(dbArticle);
         })
         .catch(function (err) {
             res.json(err);
         });
 }
-exports.postNote = function (req, res) {
 
+exports.postNote = function (req, res) {
+    db.Article.find({})
 }
-exports.clear = function(req, res) {
+
+exports.save = function (req, res) {
+    db.Article.update({}, { $set: { saved: true } }, { multi: true })
+        .then(() => {
+            res.redirect("/")
+                .catch(function (err) {
+                    res.json(err)
+                })
+        })
+}
+
+exports.saved = function (req, res) {
+    db.Article.find({saved: true}).limit(10)
+        .then(function (results) {
+            res.render("saved", { data: results })
+                .catch(function (err) {
+                    res.json(err);
+                });
+        })
+}
+exports.clear = function (req, res) {
     db.Article.remove()
-    .then(() => {
-        res.redirect("/")
-    })
+        .then(() => {
+            res.redirect("/")
+        })
 }

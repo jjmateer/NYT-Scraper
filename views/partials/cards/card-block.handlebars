@@ -1,8 +1,16 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title"><h3>Title:</h3> {{this.title}}</h5>
-    <p class="card-text"><h3>Summary:</h3>{{this.summary}}</p>
-  <p><a href="{{this.link}}" class="btn btn-danger">Link</a></p>
-  <a href="/" class="btn btn-danger">Save Article</a>
+    <h5 class="card-title">
+      <h3>Title:</h3> {{this.title}}
+    </h5>
+    <p class="card-text">
+      <h3>Summary:</h3>{{this.summary}}
+    </p>
+    <a href="`/articles/{{this.id}}`" class="btn-btn-danger">Save</a>
+    <p><a href="{{this.link}}" class="btn btn-danger">Link</a></p>
+    <a href="/" class="btn btn-danger">Save Article</a>
+    <form id="submitForm" action="{{this.id}}" method="post">
+      <input class="btn btn-danger" type="submit" value="Save">{{this.saved}}</input>
+    </form>
   </div>
 </div>
