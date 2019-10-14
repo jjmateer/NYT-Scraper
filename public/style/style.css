@@ -5,8 +5,22 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+#mainHeader {
+  background:#e9ecef;
+  font-size:50px;
+  width:90%;
+  height:5%;
+  margin:auto;
+  text-align:center;
+  border-radius:4px;
+  margin-bottom:2%;
+  line-height:100%;
+}
 .jumbotron {
+  top:0;
   box-shadow: 5px 5px 10px black;
+  z-index:100;
+  width:100%;
 }
 .card {
   font-size:1.25vw;
