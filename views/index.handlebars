@@ -3,14 +3,14 @@
     <hr class="my-4">
     <a class="btn btn-danger btn-lg" role="button">Home</a>
     <a class="btn btn-danger btn-lg" role="button">Saved Articles</a>
-    <a class="btn btn-danger btn-lg" role="button">Scrape</a>
+    <a class="btn btn-danger btn-lg" href="/scrape" role="button">Scrape</a>
     <a class="btn btn-danger btn-lg" role="button">Clear</a>
 </div>
 <div id="mainCont" class="container-fluid">
     <div id="articles">
-        {{!-- {{#each cards}} --}}
+        {{#each cards}}
         {{> cards/card-block}}
-        {{!-- {{/each}} --}}
+        {{/each}}
     </div>
     <div id="notes"></div>
 </div>

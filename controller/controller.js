@@ -22,27 +22,35 @@ exports.scrape = function (req, res) {
                 .text()
             db.Article.create(result)
                 .then(function (dbArticle) {
-                    console.log(dbArticle);
+                    // console.log(dbArticle);
                 })
                 .catch(function (err) {
-                    console.log(err);
+                    // console.log(err);
                 });
         });
     }).then(() => {
-        res.redirect("/")
+        res.redirect("/articles")
     })
 }
 exports.getAll = function (req, res) {
     db.Article.find({})
-    .then(function(dbArticle) {
-      res.json(dbArticle);
-    })
+        .then(function (results) {
+            res.json(results)
+        })
     .catch(function(err) {
       res.json(err);
     });
 }
 exports.getOne = function (req, res) {
-
+    db.Article.findOne({ _id: req.params.id })
+        .populate("note")
+        .then(function (dbArticle) {
+            // If we were able to successfully find an Article with the given id, send it back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
 }
 exports.postNote = function (req, res) {
 
