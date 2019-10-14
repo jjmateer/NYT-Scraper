@@ -1,29 +1,5 @@
-<div class="jumbotron">
-    <h1 class="display-4">New York Times World News Scraper</h1>
-    <hr class="my-4">
-    <a class="btn btn-danger btn-lg" role="button">Home</a>
-    <a class="btn btn-danger btn-lg" href="saved" role="button">Saved Articles</a>
-    <a class="btn btn-danger btn-lg" href="/scrape" role="button">Scrape</a>
-    <a class="btn btn-danger btn-lg" href="/clear" role="button">Clear</a>
-</div>
-<div id="mainCont" class="container-fluid">
-    <div id="articles">
+{{> jumbotron/jumbotron-block}}
         {{#each data}}
         {{> cards/card-block}}
         {{/each}}
-    </div>
-    <div id="noteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Note:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                        <input id="modalSubmit" class="btn btn-danger" type="submit" value="Save"></input>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+    {{> modal/modal-block}}
