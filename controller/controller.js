@@ -28,8 +28,10 @@ exports.scrape = function (req, res) {
                 .catch(function (err) {
                     console.log(err);
                 });
-        })
-    });
+        });
+    }).then(() => {
+        res.redirect("/")
+    })
 }
 exports.getAll = function (req, res) {
 
