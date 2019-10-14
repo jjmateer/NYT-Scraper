@@ -6,10 +6,11 @@
     <p class="card-text">
       <h3>Summary:</h3>{{this.summary}}
     </p>
-    <p><a href="{{this.link}}" class="btn btn-danger">Link</a></p>
-    <a href="/saved" class="btn btn-danger">Save Article</a>
-    <form id="submitForm" action="{{this.id}}" method="post">
-      <input class="btn btn-danger" type="submit" value="Save">{{this.saved}}</input>
-    </form>
+    <div id="buttonContainer">
+      <a href="{{this.link}}" id="cardBtn" class="btn btn-danger">Link</a>
+      <form id="submitForm" action="{{this.id}}" method="post">
+        <input  id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>
+      </form>
+    </div>
   </div>
 </div>

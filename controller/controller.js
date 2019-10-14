@@ -57,7 +57,7 @@ exports.postNote = function (req, res) {
 }
 
 exports.save = function (req, res) {
-    db.Article.updateOne({ _id: req.params.id}, { $set: { saved: true } }, { multi: true })
+    db.Article.updateOne({ _id: req.params.id}, { $set: { saved: true } })
         .then(() => {
             res.redirect("/")
         })

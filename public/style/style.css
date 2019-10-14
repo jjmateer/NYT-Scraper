@@ -8,8 +8,27 @@ body {
   box-shadow: 5px 5px 10px black;
 }
 .card {
+  font-size:1.25vw;
   width: 90%;
   margin: auto;
   margin-bottom: 2%;
   box-shadow: 5px 5px 10px black;
+}
+#buttonContainer {
+  width:20%;
+  display:flex;
+  float:right;
+}
+#submitForm {
+  margin:0;
+  width:6vw;
+  height:40px;
+}
+#cardBtn {
+  padding:0;
+  width:6vw;
+  height:40px;
+  line-height:40px;
+  margin:auto;
+  font-size:100%;
 }
