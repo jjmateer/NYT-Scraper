@@ -9,7 +9,13 @@
     <div id="buttonContainer">
       <a href="{{this.link}}" id="cardBtn" class="btn btn-danger">Link</a>
       <form id="submitForm" action="{{this.id}}" method="post">
-        <input  id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>
+      {{#unless saved}}
+        <input id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>
+      {{/unless}}
+      {{#if saved}}
+      <button id="cardBtn" type="button" class="btn btn-danger" data-toggle="modal"
+        data-target=".bd-example-modal-lg">Add note</button>
+      {{/if}}
       </form>
     </div>
   </div>

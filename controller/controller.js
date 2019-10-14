@@ -38,7 +38,7 @@ exports.scrape = function (req, res) {
                 });
         });
     }).then(() => {
-        res.redirect("/")
+        res.redirect("back")
     })
 }
 exports.getOne = function (req, res) {
@@ -53,7 +53,13 @@ exports.getOne = function (req, res) {
 }
 
 exports.postNote = function (req, res) {
-    db.Article.find({})
+    db.Article.findOne({id: req.params.id}, {$push: {notes: "hello"}})
+    .then(() => {
+        console.log('hi')
+    })
+    .catch((err) => {
+        res.json(err)
+    })
 }
 
 exports.save = function (req, res) {
@@ -77,6 +83,6 @@ exports.saved = function (req, res) {
 exports.clear = function (req, res) {
     db.Article.deleteMany()
         .then(() => {
-            res.redirect("/")
+            res.redirect("back")
         })
 }
