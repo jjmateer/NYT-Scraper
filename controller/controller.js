@@ -7,17 +7,20 @@ exports.home = function (req, res) {
 exports.scrape = function (req, res) {
     axios.get("https://www.nytimes.com/section/world").then(function (response) {
         var $ = cheerio.load(response.data);
-        $("div h2").each(function (i, element) {
+        $("article div").each(function (i, element) {
             var result = {};
             result.title = $(this)
+                .children("h2")
                 .children("a")
-                .text();
+                .text()
             result.link = $(this)
-                .children("a")
-                .attr("href");
+            .children("h2")
+            .children("a")
+            .attr('href')
             result.summary = $(this)
-                .children("a")
-                .attr("href");
+            .children("p"[0])
+            .text()
+            // .hasClass("css-l8q78b e134j7ei1")
             db.Article.create(result)
                 .then(function (dbArticle) {
                     console.log(dbArticle);
@@ -25,8 +28,8 @@ exports.scrape = function (req, res) {
                 .catch(function (err) {
                     console.log(err);
                 });
-    })
-});
+        })
+    });
 }
 exports.getAll = function (req, res) {
 
