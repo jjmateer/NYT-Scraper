@@ -1,11 +1,5 @@
 {{> jumbotron/jumbotron-block}}
 <h1 id="mainHeader">All Articles</h1>
-<form id="noteForm" action="/postnote" method="POST">
-    {{!-- <h2>Article ID: {{this.id}}</h2> --}}
-    {{!-- <label for="message-text" class="col-form-label">Note:</label> --}}
-    <input type="text" name="messagedata" id="message-text" />
-    <input id="modalSubmit" name="submitbutton" class="btn btn-danger" type="submit" value="Post" />
-</form>
 {{#each data}}
 {{> cards/card-block}}
 {{/each}}

@@ -1,7 +1,7 @@
 <div class="card">
-      {{> modal/modal-block}}
   <div class="card-body">
     <h5 class="card-title">
+      <h1>Article ID: {{this.id}}</h1>
       <h3>Title:</h3> {{this.title}}
     </h5>
     <p class="card-text">
@@ -9,6 +9,7 @@
     </p>
     <div id="buttonContainer">
       <a href="{{this.link}}" id="cardBtn" class="btn btn-danger">Link</a>
+            {{> modal/modal-block}}
       <form id="submitForm" action="/save/{{this.id}}" method="post">
       {{#unless saved}}
         <input id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>

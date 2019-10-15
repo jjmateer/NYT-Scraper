@@ -2,11 +2,11 @@
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="noteForm" action="/postnote" method="POST">
-                    {{!-- <h2>Article ID: {{this.id}}</h2> --}}
+            <form id="noteForm" action="/postnote/{{this.id}}" method="POST">
+                    <h2>Article ID: {{this.id}}</h2>
                     <label for="message-text" class="col-form-label">Note:</label>
-                    <input type="text" name="messagedata">
-                    <input id="modalSubmit" class="btn btn-danger" type="submit" value="Post">
+                    <input type="text" id="message-text" name="messagedata">
+                    <input id="modalSubmit" class="btn btn-danger"n type="submit" value="Post">
             </form>
         </div>
     </div>

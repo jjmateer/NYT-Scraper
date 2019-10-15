@@ -51,8 +51,8 @@ body {
   padding:5px;
 }
 #message-text {
+  width:100%;
   min-height:50px;
-  max-height:200px;
 }
 #modalSubmit {
   width:10%;

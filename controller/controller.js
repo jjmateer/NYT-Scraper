@@ -54,16 +54,19 @@ exports.getOne = function (req, res) {
 }
 
 exports.postNote = function (req, res) {    
-    console.log(req.body)
+    // console.log(req.body.messagedata)
     // console.log(req.params.id)
-    // db.Note.create({ body: "note"})
-    // db.Article.findOne({_id: req.    params.id}, {$push: {notes: req.body.note}})
-    // .then(() => {
-    //     console.log('hi')
-    // })
-    // .catch((err) => {
-    //     res.json(err)
-    // })
+    db.Note.create({ body: req.body.messagedata})
+    .then((dbNote) => {
+        console.log(dbNote)
+        return db.Article.findOneAndUpdate({_id: req.params.id}, { $push: { notes: dbNote.body } }, { new: true });
+    })
+    .then(() => {
+        res.redirect("/")
+    })
+    .catch((err) => {
+        res.json(err)
+    })
 }
 
 exports.save = function (req, res) {
