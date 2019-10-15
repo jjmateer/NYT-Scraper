@@ -94,6 +94,17 @@ exports.save = function (req, res) {
         })
 }
 
+exports.delete = function (req, res) {
+    console.log(req.params.id)
+    db.Article.updateOne({ _id: req.params.id}, { $set: { saved: false } })
+        .then(() => {
+            res.redirect("back")
+        })
+        .catch(function (err) {
+            res.json(err)
+        })
+}
+
 exports.saved = function (req, res) {
     db.Article.find({ saved: true }).limit(30)
         .then(function (results) {

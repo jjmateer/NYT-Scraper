@@ -13,6 +13,7 @@ router.get("/populate", controller.populate)
 //POST
 router.post("/postnote/:id", controller.postNote);
 router.post("/save/:id", controller.save);
+router.post("/delete/:id", controller.delete);
 
 
 module.exports = router;    
