@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var NoteSchema = new Schema({
-    UID: {
+    relationID: {
         type: String,
         required: true
     },
-    body: {
+    notebody: {
         type: String,
         required: true
     },

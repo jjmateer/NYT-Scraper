@@ -9,23 +9,26 @@
     </p>
     <div id="buttonContainer">
       <a href="{{this.link}}" id="cardBtn" class="btn btn-danger">Link</a>
-        {{#unless saved}}
+      {{#unless saved}}
       <form id="submitForm" action="/save/{{this.id}}" method="post">
         <input id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>
       </form>
-        {{/unless}}
-        {{#if saved}}
+      {{/unless}}
+      {{#if saved}}
       <form id="submitForm" action="/delete/{{this.id}}" method="post">
         <input id="cardBtn" class="btn btn-danger" type="submit" value="Delete"></input>
       </form>
-        {{/if}}
+      {{/if}}
     </div>
     {{#if saved}}
     {{> noteform/noteform-block}}
+    <form id="submitForm" action="/clearnotes/{{this.id}}" method="post">
+      <input id="cardBtn" class="btn btn-danger" type="submit" value="Clear Notes"></input>
+    </form>
     <div class="container-fluid">
       <h2>Notes</h2>
       {{notes}}
-    {{/if}}
+      {{/if}}
     </div>
   </div>
 </div>

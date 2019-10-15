@@ -53,39 +53,32 @@ exports.getOne = function (req, res) {
         });
 }
 
-exports.postNote = function (req, res) {    
+exports.postNote = function (req, res) {
     // console.log(req.body.messagedata)
     // console.log(req.params.id)
-    db.Note.create({ UID: req.params.id, body: req.body.messagedata})
-    .then((dbNote) => {
-        // res.json(dbNote)
-        return db.Article.findOneAndUpdate({_id: req.params.id}, { $push: {  notes: dbNote.body } }, { new: true });
-    })
+    db.Note.create({ relationID: req.params.id, notebody: req.body.messagedata })
+        .then((dbNote) => {
+            console.log(dbNote)
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { notes: dbNote.notebody } }, { new: true });
+        })
+        .then(() => {
+            res.redirect("back")
+        })
+        .catch((err) => {
+            res.json(err)
+        })
+}
+
+exports.clearNotes = function (req, res) {
+    db.Article.findOneAndUpdate({ _id: req.params.id }, { $set: { notes: [] } }, { new: true })
     .then(() => {
         res.redirect("back")
     })
-    .catch((err) => {
-        res.json(err)
-    })
-}
-
-exports.populate = function(req, res) {
-    db.Article.find({})
-    // Specify that we want to populate the retrieved users with any associated notes
-    .populate("notes")
-    .then(function(dbArticle) {
-      // If able to successfully find and associate all Users and Notes, send them back to the client
-      res.json(dbArticle);
-    })
-    .catch(function(err) {
-      // If an error occurs, send it back to the client
-      res.json(err);
-    });
 }
 
 exports.save = function (req, res) {
     console.log(req.params.id)
-    db.Article.updateOne({ _id: req.params.id}, { $set: { saved: true } })
+    db.Article.updateOne({ _id: req.params.id }, { $set: { saved: true } })
         .then(() => {
             res.redirect("back")
         })
@@ -96,7 +89,7 @@ exports.save = function (req, res) {
 
 exports.delete = function (req, res) {
     console.log(req.params.id)
-    db.Article.updateOne({ _id: req.params.id}, { $set: { saved: false } })
+    db.Article.updateOne({ _id: req.params.id }, { $set: { saved: false } })
         .then(() => {
             res.redirect("back")
         })
