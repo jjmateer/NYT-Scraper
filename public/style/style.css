@@ -59,3 +59,14 @@ body {
   margin:auto;
   margin-top:1.5%;
 }
+#noteArchiveForm {
+  width:75%;
+  height:15%;
+  margin:auto;
+  padding:5px;
+  border-radius:4px;
+  background-color:white;
+}
+#archiveID {
+  width:90%;
+}
