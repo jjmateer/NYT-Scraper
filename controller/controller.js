@@ -76,6 +76,17 @@ exports.clearNotes = function (req, res) {
     })
 }
 
+exports.notearchive = function (req, res) {
+    res.render("note-archive")
+}
+exports.getoldnotes = function (req, res) {
+    db.Note.find({relationID: req.params.id})
+    .then(function (results) {
+        console.log(results)
+        res.render("note-archive", { data: results })
+    })
+}
+
 exports.save = function (req, res) {
     console.log(req.params.id)
     db.Article.updateOne({ _id: req.params.id }, { $set: { saved: true } })

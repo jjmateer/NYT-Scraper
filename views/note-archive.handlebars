@@ -1,0 +1,15 @@
+{{> jumbotron/jumbotron-block}}
+<h1 id="mainHeader">Note Archive</h1>
+<h3>Search previously deleted notes</h3>
+
+<form id="noteArchiveForm">
+    <label for="archiveID" class="col-form-label">Article ID:</label>
+    <input type="text" id="archiveID" name="archiveid">
+    <input  class="btn btn-danger" type="submit" value="Post">
+</form>
+<div>
+    Notes for article {{this.relationalID}}:
+          {{#each data}}
+            {{> archive-card/archive-card-block}}
+            {{/each}}
+</div>
