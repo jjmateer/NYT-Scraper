@@ -5,10 +5,10 @@ const controller = require("./controller/controller.js")
 router.get("/", controller.home);
 router.get("/scrape", controller.scrape);
 router.get("/article/:id", controller.getOne);
-router.post("/postnote/:id", controller.postNote);
-router.post("/:id", controller.save);
+router.post("/postnote", controller.postNote);
+router.post("/save/:id", controller.save);
 router.get("/saved", controller.saved);
 router.get("/clear", controller.clear)
 
 
-module.exports = router;
+module.exports = router;    

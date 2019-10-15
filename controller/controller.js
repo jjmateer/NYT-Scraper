@@ -4,6 +4,7 @@ const db = require("../models");
 const url = require('url');
 const adr = 'http://localhost:8080';
 const q = url.parse(adr, true);
+
 exports.home = function (req, res) {
     db.Article.find({}).limit(10)
         .then(function (results) {
@@ -52,17 +53,21 @@ exports.getOne = function (req, res) {
         });
 }
 
-exports.postNote = function (req, res) {
-    db.Article.findOne({id: req.params.id}, {$push: {notes: "hello"}})
-    .then(() => {
-        console.log('hi')
-    })
-    .catch((err) => {
-        res.json(err)
-    })
+exports.postNote = function (req, res) {    
+    console.log(req.body)
+    // console.log(req.params.id)
+    // db.Note.create({ body: "note"})
+    // db.Article.findOne({_id: req.    params.id}, {$push: {notes: req.body.note}})
+    // .then(() => {
+    //     console.log('hi')
+    // })
+    // .catch((err) => {
+    //     res.json(err)
+    // })
 }
 
 exports.save = function (req, res) {
+    console.log(req.params.id)
     db.Article.updateOne({ _id: req.params.id}, { $set: { saved: true } })
         .then(() => {
             res.redirect("/")

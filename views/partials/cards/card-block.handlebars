@@ -1,4 +1,5 @@
 <div class="card">
+      {{> modal/modal-block}}
   <div class="card-body">
     <h5 class="card-title">
       <h3>Title:</h3> {{this.title}}
@@ -8,7 +9,7 @@
     </p>
     <div id="buttonContainer">
       <a href="{{this.link}}" id="cardBtn" class="btn btn-danger">Link</a>
-      <form id="submitForm" action="{{this.id}}" method="post">
+      <form id="submitForm" action="/save/{{this.id}}" method="post">
       {{#unless saved}}
         <input id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>
       {{/unless}}
@@ -17,6 +18,10 @@
         data-target=".bd-example-modal-lg">Add note</button>
       {{/if}}
       </form>
+    </div>
+    <div class="container-fluid">
+      <h2>Notes</h2>
+      {{notes}}
     </div>
   </div>
 </div>
