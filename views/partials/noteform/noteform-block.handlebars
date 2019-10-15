@@ -1,0 +1,12 @@
+{{!-- <div id="noteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content"> --}}
+            <form id="noteForm" action="/postnote/{{this.id}}" method="POST">   
+                    <label for="message-text" class="col-form-label">Note:</label>
+                    <input type="text" id="message-text" name="messagedata">
+                    <input id="modalSubmit" class="btn btn-danger" type="submit" value="Post">
+            </form>
+        {{!-- </div>
+    </div>
+</div> --}}

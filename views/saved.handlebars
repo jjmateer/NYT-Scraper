@@ -1,6 +1,7 @@
 {{> jumbotron/jumbotron-block}}
     <h1 id="mainHeader">Saved Articles</h1>
         {{#each data}}
+        {{#if saved}}
         {{> cards/card-block}}
+        {{/if}}
         {{/each}}
-    {{> modal/modal-block}}

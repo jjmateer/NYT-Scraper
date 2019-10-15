@@ -1,5 +1,7 @@
 {{> jumbotron/jumbotron-block}}
 <h1 id="mainHeader">All Articles</h1>
 {{#each data}}
+{{#unless saved}}
 {{> cards/card-block}}
+{{/unless}}
 {{/each}}
