@@ -22,9 +22,20 @@
     </div>
     {{#if saved}}
     {{> noteform/noteform-block}}
+    {{#if notes}}
     <div class="container-fluid">
       <h2>Notes</h2>
-      {{notes}}
+      {{#each notes}}
+      <div class="card">
+        <div class="card-body">
+          {{this}}
+        </div>
+      </div>
+      {{/each}}
+      <form id="submitForm" action="/clearnotes/{{this.id}}" method="post">
+        <input id="cardBtn" class="btn btn-danger" type="submit" value="Clear"></input>
+        {{/if}}
+      </form>
       {{/if}}
     </div>
   </div>
