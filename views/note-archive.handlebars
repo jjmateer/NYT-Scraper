@@ -5,12 +5,14 @@
     <h3>Search previously deleted notes</h3>
     <label for="archiveID" class="col-form-label">Article ID:</label>
     <input type="text" id="archiveID" name="archiveid">
-    <input class="btn btn-danger" id="archiveBtn" type="submit" value="Post">
+    <input class="btn btn-danger" id="archiveBtn" type="submit" value="Submit">
 </form>
 {{/unless}}
 <div>
-    {{this.relationalID}}:
+    {{#if data}}
     {{#each data}}
     {{> archive-card/archive-card-block}}
     {{/each}}
+    <a id="archiveBack" class="btn btn-danger btn-lg" href="/notearchive" role="button">Go back</a>
+    {{/if}}
 </div>

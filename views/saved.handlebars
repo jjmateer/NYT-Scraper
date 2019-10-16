@@ -1,7 +1,12 @@
 {{> jumbotron/jumbotron-block}}
-    <h1 id="mainHeader">Saved Articles</h1>
-        {{#each data}}
-        {{#if saved}}
-        {{> cards/card-block}}
-        {{/if}}
-        {{/each}}
+<h1 id="mainHeader">Saved Articles</h1>
+{{#unless data}}
+<div id="noArticles">
+    <h2 id="mainHeader">You currently have no saved articles.</h2>
+</div>
+{{/unless}}
+{{#each data}}
+{{#if saved}}
+{{> cards/card-block}}
+{{/if}}
+{{/each}}

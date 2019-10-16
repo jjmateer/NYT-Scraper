@@ -1,5 +1,10 @@
 {{> jumbotron/jumbotron-block}}
 <h1 id="mainHeader">All Articles</h1>
+{{#unless data}}
+<div id="noArticles">
+    <h2 id="mainHeader">Click "Scrape" to get new articles.</h2>
+</div>
+{{/unless}}
 {{#each data}}
 {{#unless saved}}
 {{> cards/card-block}}

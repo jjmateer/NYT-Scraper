@@ -7,14 +7,16 @@ body {
 }
 #mainHeader {
   background:#e9ecef;
+  color:darkblue;
   font-size:50px;
   width:90%;
-  height:5%;
+  height:auto;
   margin:auto;
   text-align:center;
   border-radius:4px;
   margin-bottom:2%;
   line-height:100%;
+  text-shadow: 5px 5px 10px white;
 }
 .jumbotron {
   top:0;
@@ -37,12 +39,12 @@ body {
 #submitForm {
   margin:0;
   width:6vw;
-  height:40px;
+  height:auto;
 }
 #cardBtn {
   padding:0;
   width:6vw;
-  height:40px;
+  height:auto;
   line-height:40px;
   margin:auto;
   font-size:100%;
@@ -60,8 +62,8 @@ body {
   margin-top:1.5%;
 }
 #noteArchiveForm {
-  width:75%;
-  height:15%;
+  width:85%;
+  height:auto;
   margin:auto;
   padding:5px;
   border-radius:4px;
@@ -69,4 +71,11 @@ body {
 }
 #archiveID {
   width:90%;
+}
+#archiveBack {
+  float:right;
+  margin-right:5%;
+}
+#formBtns {
+  margin-top:2.5%;
 }
