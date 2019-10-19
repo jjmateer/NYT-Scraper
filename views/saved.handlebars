@@ -1,8 +1,10 @@
 {{> jumbotron/jumbotron-block}}
-<h1 id="mainHeader">Saved Articles</h1>
 {{#unless data}}
 <div id="noArticles">
-    <h2 id="mainHeader">You currently have no saved articles.</h2>
+    <h2 id="mainHeader">You have no saved articles.
+        <a id="navBtn" class="dropdown-item" href="/" role="button">Go to all articles</a>
+        <a id="navBtn" class="dropdown-item" href="/notearchive" role="button">Go to note archive</a>
+    </h2>
 </div>
 {{/unless}}
 {{#each data}}

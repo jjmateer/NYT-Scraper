@@ -1,8 +1,10 @@
 {{> jumbotron/jumbotron-block}}
-<h1 id="mainHeader">All Articles</h1>
 {{#unless data}}
 <div id="noArticles">
-    <h2 id="mainHeader">Use "Scrape" to get new articles.</h2>
+    <h2 id="mainHeader">You have no new articles.
+        <a id="navBtn" class="dropdown-item" href="/saved" role="button">Go to saved articles.</a>
+        <a id="navBtn" class="dropdown-item" href="/scrape" role="button">Scrape new articles</a>
+    </h2>
 </div>
 {{/unless}}
 {{#each data}}
