@@ -7,4 +7,14 @@ Stores all of the articles & notes on MongoDB and uses handlebars to dynamically
 
 Users can save articles of their choice, leave notes for them, and retrieve previously deleted notes.
 
+## Technology used
+- Node.js
+- Express-Handlebars
+- Express.js
+- Axios
+- Cheerio
+- CSS3
+- MongoDB
+- Bootstrap
+
 ![NYTS](https://user-images.githubusercontent.com/50982277/67139032-371bc780-f200-11e9-9442-29f896d29558.png)
